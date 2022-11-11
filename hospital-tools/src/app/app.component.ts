@@ -10,18 +10,14 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'hospital-tools';
 
-  highlight: string = '';
-
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.route('');
   }
 
   route(path: string): void {
     this.router.navigate([path]);
-    this.highlight = path;
   }
 }

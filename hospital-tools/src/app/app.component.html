@@ -1,10 +1,10 @@
 <div class="header">
   <div style="position:relative; height: 100%; width: 100%;">
-      <button mat-button class="nav-button" [ngClass]="{'selected' : highlight == ''}"
-          (click)="route('')">Patients</button>
-      <button mat-button class="nav-button" [ngClass]="{'selected' : highlight == 'experience'}"
-          (click)="route('dashboard')">Dashboard</button>
-      <img class="header-text" src=""> -->
+    <button mat-button class="nav-button" routerLinkActive="selected" [routerLink]="['./']"
+      [routerLinkActiveOptions]="{exact: true}" (click)="route('')">Patients</button>
+    <button mat-button routerLinkActive="selected" routerLink="dashboard" class="nav-button"
+      (click)="route('dashboard')">Dashboard</button>
+    <img class="header-text" src="../assets/logo.png" (click)="route('')">
   </div>
 </div>
 
