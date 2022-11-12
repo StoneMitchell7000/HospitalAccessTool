@@ -26,4 +26,10 @@ export class Patient {
             return new Date(this.dateOfBirth);
         }
     }
+
+    get fullName(): any {
+        if (this.firstName && this.lastName) {
+            return this.firstName + ' ' + this.lastName;
+        }
+    }
 }

@@ -8,7 +8,10 @@
   </div>
 </div>
 
-
 <div class="app-body">
   <router-outlet></router-outlet>
 </div>
+
+<ng-progress id="myProgress" [speed]="200" [color]="'#ff4f4f'" [trickleSpeed]="250" [thick]="true" [ease]="'linear'"
+  [spinner]="false">
+</ng-progress>

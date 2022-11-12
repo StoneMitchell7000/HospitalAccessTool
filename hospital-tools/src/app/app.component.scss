@@ -9,6 +9,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     z-index: 100;
     min-width: 600px;
+    min-width: 1024px;
 }
 
 .app-body {
@@ -18,6 +19,7 @@
     right: 0;
     top: 58px;
     background-color: #e2e2e2;
+    min-width: 1024px;
 }
 
 .header-text {

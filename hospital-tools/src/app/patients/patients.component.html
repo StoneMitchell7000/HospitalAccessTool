@@ -36,7 +36,7 @@
                     <div style="border-top-right-radius: 4px;"></div>
                 </div>
                 <div class="patient-scroll-container">
-                    <div *ngFor="let patient of patients">
+                    <div *ngFor="let patient of filteredPatients">
                         <div class="patient-row animated fadeInUp">
                             <div>{{patient.lastName}}</div>
                             <div>{{patient.firstName}}</div>

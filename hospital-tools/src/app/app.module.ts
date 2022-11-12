@@ -15,6 +15,8 @@ import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { PhoneFormatPipe } from './models/phone-format.pipe';
 import { NewPatientComponent } from './new-patient/new-patient.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { PatientDrilldownComponent } from './patient-drilldown/patient-drilldown.component';
 
 export const options: Partial<IConfig> = {
 };
@@ -25,7 +27,8 @@ export const options: Partial<IConfig> = {
     PatientsComponent,
     DashboardComponent,
     PhoneFormatPipe,
-    NewPatientComponent
+    NewPatientComponent,
+    PatientDrilldownComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ export const options: Partial<IConfig> = {
     ReactiveFormsModule,
     MatIconModule,
     NgxMaskModule.forRoot(options),
-    MatDialogModule
+    MatDialogModule,
+    NgProgressModule
   ],
   providers: [],
   bootstrap: [AppComponent]

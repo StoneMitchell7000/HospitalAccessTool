@@ -23,8 +23,7 @@ $app-primary: (
     A200: #ff4f4f,
     A400: #ff4f4f,
     A700: #ff4f4f,
-    contrast: (
-        50: white,
+    contrast: (50: white,
         100: white,
         200: white,
         300: white,
@@ -38,7 +37,7 @@ $app-primary: (
         A200: white,
         A400: white,
         A700: white,
-  )
+    )
 );
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
