@@ -40,12 +40,14 @@
                         <div class="patient-row animated fadeInUp">
                             <div>{{patient.lastName}}</div>
                             <div>{{patient.firstName}}</div>
-                            <div>{{patient.formatDate | date:'MM-dd-yyyy'}}</div>
+                            <div>{{patient.formatDate | date:'MM/dd/yyyy'}}</div>
                             <div>{{patient.phone | phoneFormat}}</div>
                             <div>{{patient.email}}</div>
                             <div>{{patient.address}}</div>
                             <div>{{patient.ssn}}</div>
                             <div>{{patient.insurance}}</div>
+                            <div class="clickrow" matTooltip="Click to See Patient Details" matTooltipPosition="below"
+                                matTooltipShowDelay="600" matRipple [matRippleColor]="'#ff676726'" (click)="openDrilldown(patient)"></div>
                         </div>
                     </div>
                 </div>

@@ -1,1 +1,62 @@
-<p>new-patient works!</p>
+<div class="popup-title">New Patient</div>
+<div class="new-patient-grid">
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>First Name</mat-label>
+            <input matInput [(ngModel)]="newPatient.firstName">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput [(ngModel)]="newPatient.lastName">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Date Of Birth</mat-label>
+            <input matInput [(ngModel)]="newPatient.dateOfBirth" [matDatepicker]="picker" (click)="picker.open()" readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Phone</mat-label>
+            <input [(ngModel)]="newPatient.phone" matInput type="text" mask="(000) 000-0000">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="newPatient.email">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Address</mat-label>
+            <input matInput [(ngModel)]="newPatient.address">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>SSN</mat-label>
+            <input matInput [(ngModel)]="newPatient.ssn" type="number">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Insurance Provider</mat-label>
+            <input matInput [(ngModel)]="newPatient.insurance">
+        </mat-form-field>
+    </div>
+    <div class="bottom-bar">
+        <button mat-button class="save-button" (click)="close(true)">Create Patient
+            <mat-icon matSuffix>save</mat-icon>
+        </button>
+
+        <button mat-button class="cancel-button" (click)="close(false)">Cancel
+            <mat-icon matSuffix>close</mat-icon>
+        </button>
+    </div>
+</div>

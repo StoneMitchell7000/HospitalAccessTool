@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
+import { MatRippleModule, MatNativeDateModule } from '@angular/material/core';
 import { PatientsComponent } from './patients/patients.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +17,9 @@ import { NewPatientComponent } from './new-patient/new-patient.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { PatientDrilldownComponent } from './patient-drilldown/patient-drilldown.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 export const options: Partial<IConfig> = {
 };
@@ -42,7 +45,11 @@ export const options: Partial<IConfig> = {
     MatIconModule,
     NgxMaskModule.forRoot(options),
     MatDialogModule,
-    NgProgressModule
+    NgProgressModule,
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

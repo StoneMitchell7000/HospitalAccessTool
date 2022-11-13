@@ -5,6 +5,7 @@ import { debounceTime } from 'rxjs/operators';
 import { Patient } from '../models/patient';
 import { NewPatientComponent } from '../new-patient/new-patient.component';
 import { NgProgress, NgProgressRef } from '@ngx-progressbar/core';
+import { PatientDrilldownComponent } from '../patient-drilldown/patient-drilldown.component';
 
 @Component({
   selector: 'app-patients',
@@ -74,7 +75,7 @@ export class PatientsComponent implements OnInit {
 
   loadPatients(): void {
     this.progress.start();
-    // load all patients here
+    // load all patients here w/ sql
     // temp
     let temp = {
       patient_id: 0, first_name: 'Testy', last_name: 'Testerson'
@@ -92,10 +93,8 @@ export class PatientsComponent implements OnInit {
       } else {
         temp.phone = 7897897897;
       }
-      this.patients.push(new Patient(temp));
+      this.patients.unshift(new Patient(temp));
     }
-
-    console.log(this.patients[0].fullName);
 
     // put inside of query return
     this.progress.complete();
@@ -104,6 +103,36 @@ export class PatientsComponent implements OnInit {
   }
 
   createPatient(): void {
-    this.newPatientDialog.open(NewPatientComponent);
+    const dialog = this.newPatientDialog.open(NewPatientComponent, {
+      disableClose: true
+    });
+
+    dialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.patients.unshift(result);
+        this.savePatient(result);
+      }
+    });
+  }
+
+  savePatient(newPatient: Patient): void {
+    this.progress.start();
+    // save w/ sql
+
+    // put inside of query return
+    this.progress.complete();
+    this.loadPatients();
+  }
+
+  openDrilldown(patient: Patient): void {
+    const dialog = this.newPatientDialog.open(PatientDrilldownComponent, {
+      disableClose: true,
+      data: patient
+    });
+
+    dialog.afterClosed().subscribe(result => {
+      if (result) {
+      }
+    });
   }
 }
