@@ -127,7 +127,12 @@ export class PatientsComponent implements OnInit {
   openDrilldown(patient: Patient): void {
     const dialog = this.newPatientDialog.open(PatientDrilldownComponent, {
       disableClose: true,
-      data: patient
+      data: patient,
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '100%',
+      width: '100%',
+      panelClass: 'drilldown-popup'
     });
 
     dialog.afterClosed().subscribe(result => {

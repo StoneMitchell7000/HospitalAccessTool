@@ -1,1 +1,38 @@
-<div>{{patient.firstName}} {{patient.lastName}}'s details go here.</div>
+<div class="drilldown-layout">
+    <div class="title-block">Visits</div>
+    <div></div>
+    <div class="title-block">Procedures</div>
+    <div style="position: relative;">
+        <div class="patient-table animated fadeIn">
+            <div class="patient-relative-wrapper">
+                <div class="patient-header patient-row">
+                    <div style="border-top-left-radius: 4px;">Last Name</div>
+                    <div>First Name</div>
+                    <div>Date of Birth</div>
+                    <div>Phone</div>
+                    <div>Email</div>
+                    <div>Address</div>
+                    <div>SSN</div>
+                    <div>Insurance Provider</div>
+                    <div style="border-top-right-radius: 4px;"></div>
+                </div>
+                <div class="patient-scroll-container">
+                    <div>
+                        <div class="patient-row animated fadeInUp">
+                            <div>{{patient.lastName}}</div>
+                            <div>{{patient.firstName}}</div>
+                            <div>{{patient.formatDate | date:'MM/dd/yyyy'}}</div>
+                            <div>{{patient.phone | phoneFormat}}</div>
+                            <div>{{patient.email}}</div>
+                            <div>{{patient.address}}</div>
+                            <div>{{patient.ssn}}</div>
+                            <div>{{patient.insurance}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="title-block">Medications</div>
+    <div></div>
+</div>

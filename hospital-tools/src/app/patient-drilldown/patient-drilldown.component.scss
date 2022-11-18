@@ -1,0 +1,88 @@
+.drilldown-layout {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 80px 30px 1fr 30px 200px;
+}
+
+.title-block {
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.patient-table {
+    background-color: #e2e2e2;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    -webkit-filter: drop-shadow(2px 2px 2px #222222a1);
+    filter: drop-shadow(2px 2px 2px #222222a1);
+}
+
+.patient-relative-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.patient-header {
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr 2fr 1fr 2fr 1em !important;
+}
+
+.patient-header div {
+    background-color: #ff6767be !important;
+    color: white !important;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.patient-row {
+    position: relative;
+    display: grid;
+    height: min-content;
+    width: 100%;
+    grid-template-rows: min-content;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr 2fr 1fr 2fr;
+    column-gap: 3px;
+    margin-bottom: 3px;
+}
+
+.patient-row div {
+    padding: 5px;
+    min-width: none;
+    background-color: #ffffff;
+}
+
+.patient-scroll-container {
+    position: absolute;
+    top: 33px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 3px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.patient-scroll-container::-webkit-scrollbar {
+    width: 1em;
+}
+
+.patient-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #c6c4c4;
+    border: 1px solid white;
+    border-bottom-right-radius: 4px;
+}
+
+.patient-scroll-container::-webkit-scrollbar-track {
+    border-bottom-right-radius: 4px;
+}
