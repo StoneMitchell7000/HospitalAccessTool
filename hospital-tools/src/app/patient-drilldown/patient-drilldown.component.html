@@ -1,8 +1,29 @@
 <div class="drilldown-layout">
-    <div class="title-block">Visits</div>
-    <div></div>
-    <div class="title-block">Procedures</div>
-    <div style="position: relative;">
+    <div>
+        <div class="title-block top-title">Visits</div>
+    </div>
+    <div class="relative-wrapper">
+        <div class="visits-box">
+            <div class="visit-chip">
+                <div class="chip-start-date">11/22/33 -</div>
+                <div class="chip-end-date">44/55/66</div>
+                <button mat-icon-button class="edit-button" matTooltip="Edit Perscription" matTooltipPosition="below"
+                    matTooltipShowDelay="400"><i class="material-icons edit-button-icon">edit_square</i>
+                </button>
+            </div>
+            <div class="visit-chip selected-chip">
+                <div class="chip-start-date">11/22/33 -</div>
+                <div class="chip-end-date">44/55/66</div>
+                <button mat-icon-button class="edit-button" matTooltip="Edit Perscription" matTooltipPosition="below"
+                    matTooltipShowDelay="400"><i class="material-icons edit-button-icon">edit_square</i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="title-block">Procedures</div>
+    </div>
+    <div class="relative-wrapper">
         <div class="patient-table animated fadeIn">
             <div class="patient-relative-wrapper">
                 <div class="patient-header patient-row">
@@ -33,6 +54,50 @@
             </div>
         </div>
     </div>
-    <div class="title-block">Medications</div>
-    <div></div>
+    <div>
+        <div class="title-block">Perscriptions</div>
+    </div>
+    <div class="relative-wrapper">
+        <div class="medication-box">
+            <div class="medication-tile">
+                <button mat-icon-button class="edit-button" matTooltip="Edit Perscription" matTooltipPosition="below"
+                    matTooltipShowDelay="400"><i class="material-icons edit-button-icon">edit_square</i>
+                </button>
+                <div style="margin-top: 4px;">
+                    <mat-form-field class="medication-field">
+                        <mat-label>Medication</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="medication-field">
+                        <mat-label>Dose</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="medication-field">
+                        <mat-label>Frequency</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="medication-field">
+                        <mat-label>Date Of Birth</mat-label>
+                        <input matInput [matDatepicker]="picker" (click)="picker.open()" readonly>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="medication-field">
+                        <mat-label>Date Of Birth</mat-label>
+                        <input matInput [matDatepicker]="picker" (click)="picker.open()" readonly>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

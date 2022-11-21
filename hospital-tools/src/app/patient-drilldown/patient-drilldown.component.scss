@@ -3,22 +3,28 @@
     width: 100%;
     height: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: 30px 80px 30px 1fr 30px 200px;
+    grid-template-rows: 50px 74px 20px 1fr 20px 325px;
+    min-width: 1024px;
 }
 
 .title-block {
     font-weight: bold;
     font-size: 16px;
-    margin-left: 10px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.top-title {
+    margin-top: 30px;
 }
 
 .patient-table {
     background-color: #e2e2e2;
     position: absolute;
-    top: 10px;
+    top: 8px;
     left: 20px;
     right: 20px;
-    bottom: 10px;
+    bottom: 8px;
     border-radius: 4px;
     overflow: hidden;
     -webkit-filter: drop-shadow(2px 2px 2px #222222a1);
@@ -85,4 +91,116 @@
 
 .patient-scroll-container::-webkit-scrollbar-track {
     border-bottom-right-radius: 4px;
+}
+
+.relative-wrapper {
+    position: relative;
+}
+
+.visits-box {
+    position: absolute;
+    bottom: 8px;
+    top: 8px;
+    left: 20px;
+    right: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    white-space: nowrap;
+    border-radius: 4px;
+    -webkit-box-shadow: 2px 2px 5px 0px #222222a1;
+    -moz-box-shadow: 2px 2px 5px 0px #222222a1;
+    box-shadow: 2px 2px 5px 0px #222222a1;
+}
+
+.medication-box {
+    position: absolute;
+    bottom: 20px;
+    top: 8px;
+    left: 20px;
+    right: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    white-space: nowrap;
+    border-radius: 4px;
+    -webkit-box-shadow: 2px 2px 5px 0px #222222a1;
+    -moz-box-shadow: 2px 2px 5px 0px #222222a1;
+    box-shadow: 2px 2px 5px 0px #222222a1;
+}
+
+.medication-box::-webkit-scrollbar,
+.visits-box::-webkit-scrollbar {
+    height: 1em;
+}
+
+.medication-box::-webkit-scrollbar-thumb,
+.visits-box::-webkit-scrollbar-thumb {
+    background-color: #c6c4c4;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+.medication-box::-webkit-scrollbar-track,
+.visits-box::-webkit-scrollbar-track {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.medication-tile {
+    height: 100%;
+    width: 250px;
+    background-color: white;
+    margin-right: 4px;
+    display: inline-block;
+    position: relative;
+    border-radius: 4px;
+}
+
+.medication-field {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}
+
+.edit-button {
+    border-radius: 4px;
+    background-color: #c6c4c4;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+}
+
+.edit-button-icon {
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 9px;
+}
+
+.visit-chip {
+    height: 100%;
+    width: 150px;
+    background-color: white;
+    margin-right: 4px;
+    display: inline-block;
+    position: relative;
+    border-radius: 4px;
+    transition: .25s;
+}
+
+.chip-start-date,
+.chip-end-date {
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+.selected-chip {
+    // border: #ff6767be 2px solid;
+    background-color: #ff4f4f3f;
 }
