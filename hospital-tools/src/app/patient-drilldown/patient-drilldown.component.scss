@@ -3,19 +3,24 @@
     width: 100%;
     height: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 74px 20px 1fr 20px 325px;
+    grid-template-rows: 50px 74px 23px 1fr 23px 325px;
     min-width: 1024px;
 }
 
 .title-block {
     font-weight: bold;
     font-size: 16px;
-    margin-left: 20px;
+    margin-left: 28px;
     display: inline-block;
+    padding: 0 8px;
+    background-color: white;
+    border-radius: 4px;
+    color: #ff4f4f;
+    margin-top: 3px;
 }
 
 .top-title {
-    margin-top: 30px;
+    margin-top: 30px !important;
 }
 
 .patient-table {
@@ -42,7 +47,7 @@
 }
 
 .patient-header div {
-    background-color: #ff6767be !important;
+    background-color: #ff4f4f !important;
     color: white !important;
     font-weight: bold;
     white-space: nowrap;
@@ -168,7 +173,20 @@
 
 .edit-button {
     border-radius: 4px;
-    background-color: #c6c4c4;
+    background-color: #ff4f4f;
+    color: white;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+}
+
+.edit-button.visit-edit {
+    border-radius: 4px;
+    background-color: white;
+    color: black;
     position: absolute;
     top: 5px;
     right: 5px;
@@ -194,13 +212,22 @@
     transition: .25s;
 }
 
+.visit-chip:hover {
+    background-color: #ff4f4f36;
+    cursor: pointer;
+}
+
 .chip-start-date,
 .chip-end-date {
     font-weight: bold;
     margin-left: 4px;
 }
 
-.selected-chip {
-    // border: #ff6767be 2px solid;
-    background-color: #ff4f4f3f;
+.visit-chip.selected-chip {
+    background-color: #ff4f4f;
+    color: white;
+}
+
+.hidden-button {
+    display: none;
 }

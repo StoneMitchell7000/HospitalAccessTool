@@ -4,17 +4,13 @@
     </div>
     <div class="relative-wrapper">
         <div class="visits-box">
-            <div class="visit-chip">
-                <div class="chip-start-date">11/22/33 -</div>
-                <div class="chip-end-date">44/55/66</div>
-                <button mat-icon-button class="edit-button" matTooltip="Edit Perscription" matTooltipPosition="below"
-                    matTooltipShowDelay="400"><i class="material-icons edit-button-icon">edit_square</i>
-                </button>
-            </div>
-            <div class="visit-chip selected-chip">
-                <div class="chip-start-date">11/22/33 -</div>
-                <div class="chip-end-date">44/55/66</div>
-                <button mat-icon-button class="edit-button" matTooltip="Edit Perscription" matTooltipPosition="below"
+            <div *ngFor="let visit of visits" class="visit-chip"
+                [ngClass]="{'selected-chip' : visit.visitId === selectedVisitId}" (click)="selectVisit(visit)" matRipple
+                [matRippleUnbounded]="false" [matRippleCentered]="true" [matRippleColor]="'#ff6767be'">
+                <div class="chip-start-date">{{visit.formatInDate | date:'MM/dd/yyyy'}} -</div>
+                <div class="chip-end-date">{{visit.formatOutDate | date:'MM/dd/yyyy'}}</div>
+                <button [ngClass]="{'hidden-button' : visit.visitId !== selectedVisitId}" mat-icon-button
+                    class="edit-button visit-edit" matTooltip="Edit Visit" matTooltipPosition="below"
                     matTooltipShowDelay="400"><i class="material-icons edit-button-icon">edit_square</i>
                 </button>
             </div>
