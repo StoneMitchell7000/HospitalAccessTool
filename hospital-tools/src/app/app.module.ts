@@ -20,6 +20,9 @@ import { PatientDrilldownComponent } from './patient-drilldown/patient-drilldown
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { EditVisitComponent } from './edit-visit/edit-visit.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 export const options: Partial<IConfig> = {
 };
@@ -31,7 +34,8 @@ export const options: Partial<IConfig> = {
     DashboardComponent,
     PhoneFormatPipe,
     NewPatientComponent,
-    PatientDrilldownComponent
+    PatientDrilldownComponent,
+    EditVisitComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,9 @@ export const options: Partial<IConfig> = {
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

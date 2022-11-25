@@ -1,6 +1,9 @@
 <div class="drilldown-layout">
     <div>
         <div class="title-block top-title">Visits</div>
+        <button (click)="updateVisit(0)" mat-icon-button class="add-button" matTooltip="Add Visit"
+            matTooltipPosition="right" matTooltipShowDelay="400"><i class="material-icons">add_circle</i>
+        </button>
     </div>
     <div class="relative-wrapper">
         <div class="visits-box">
@@ -9,8 +12,9 @@
                 [matRippleUnbounded]="false" [matRippleCentered]="true" [matRippleColor]="'#ff6767be'">
                 <div class="chip-start-date">{{visit.formatInDate | date:'MM/dd/yyyy'}} -</div>
                 <div class="chip-end-date">{{visit.formatOutDate | date:'MM/dd/yyyy'}}</div>
-                <button [ngClass]="{'hidden-button' : visit.visitId !== selectedVisitId}" mat-icon-button
-                    class="edit-button visit-edit" matTooltip="Edit Visit" matTooltipPosition="below"
+                <button (click)="updateVisit(visit)" #focus
+                    [ngClass]="{'hidden-button' : visit.visitId !== selectedVisitId}" mat-icon-button
+                    class="edit-button visit-edit" matTooltip="Edit Visit" matTooltipPosition="right"
                     matTooltipShowDelay="400"><i class="material-icons edit-button-icon">edit_square</i>
                 </button>
             </div>
@@ -18,6 +22,9 @@
     </div>
     <div>
         <div class="title-block">Procedures</div>
+        <button mat-icon-button class="add-button" matTooltip="Add Procedure" matTooltipPosition="right"
+            matTooltipShowDelay="400"><i class="material-icons">add_circle</i>
+        </button>
     </div>
     <div class="relative-wrapper">
         <div class="patient-table animated fadeIn">
@@ -52,45 +59,58 @@
     </div>
     <div>
         <div class="title-block">Perscriptions</div>
+        <button mat-icon-button class="add-button" matTooltip="Add Perscription" matTooltipPosition="right"
+            matTooltipShowDelay="400"><i class="material-icons">add_circle</i>
+        </button>
     </div>
     <div class="relative-wrapper">
         <div class="medication-box">
-            <div class="medication-tile">
+            <div class="medication-tile animated fadeInRight" *ngFor="let med of visitMeds">
                 <button mat-icon-button class="edit-button" matTooltip="Edit Perscription" matTooltipPosition="below"
                     matTooltipShowDelay="400"><i class="material-icons edit-button-icon">edit_square</i>
                 </button>
                 <div style="margin-top: 4px;">
                     <mat-form-field class="medication-field">
                         <mat-label>Medication</mat-label>
-                        <input matInput>
+                        <mat-select [(ngModel)]="med.medicationId">
+                            <mat-option *ngFor="let availableMed of availableMeds" [value]="availableMed.medicationId"
+                                matTooltip="Used For: {{availableMed.usedFor}}
+                                            Reccomended Dose: {{availableMed.recommendedDose}}
+                                            Reccomended Frequency: {{availableMed.recommendedFrequency}}"
+                                matTooltipPosition="right" matTooltipShowDelay="0">
+                                {{availableMed.medicationName}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="medication-field">
                         <mat-label>Dose</mat-label>
-                        <input matInput>
+                        <input matInput [(ngModel)]="med.dose">
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="medication-field">
                         <mat-label>Frequency</mat-label>
-                        <input matInput>
+                        <input matInput [(ngModel)]="med.frequency">
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="medication-field">
-                        <mat-label>Date Of Birth</mat-label>
-                        <input matInput [matDatepicker]="picker" (click)="picker.open()" readonly>
+                        <mat-label>Start Date</mat-label>
+                        <input matInput [matDatepicker]="picker" (click)="picker.open()" readonly
+                            [(ngModel)]="med.startDate">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="medication-field">
-                        <mat-label>Date Of Birth</mat-label>
-                        <input matInput [matDatepicker]="picker" (click)="picker.open()" readonly>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-label>End Date</mat-label>
+                        <input matInput [matDatepicker]="picker2" (click)="picker2.open()" readonly
+                            [(ngModel)]="med.endDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
                 </div>
             </div>
