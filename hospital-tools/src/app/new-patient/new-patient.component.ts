@@ -25,7 +25,7 @@ export class NewPatientComponent implements OnInit {
     if (!save) {
       this.dialogRef.close();
     } else if (!this.newPatient.firstName || !this.newPatient.lastName || !this.newPatient.dateOfBirth || !this.newPatient.phone
-      || !this.newPatient.email || !this.newPatient.address || !this.newPatient.ssn || !this.newPatient.insurance) {
+      || !this.newPatient.email) {
       this.openSnackBar('Please fill out all fields before saving.', 3000);
     } else {
       this.dialogRef.close(this.newPatient);

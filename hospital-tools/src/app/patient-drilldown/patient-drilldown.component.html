@@ -12,11 +12,11 @@
                 [matRippleUnbounded]="false" [matRippleCentered]="true" [matRippleColor]="'#ff6767be'">
                 <div class="chip-start-date">{{visit.formatInDate | date:'MM/dd/yyyy'}} -</div>
                 <div class="chip-end-date">{{visit.formatOutDate | date:'MM/dd/yyyy'}}</div>
-                <button (click)="updateVisit(visit)" #focus
+                <!-- <button (click)="updateVisit(visit)" #focus
                     [ngClass]="{'hidden-button' : visit.visitId !== selectedVisitId}" mat-icon-button
                     class="edit-button visit-edit" matTooltip="Edit Visit" matTooltipPosition="right"
                     matTooltipShowDelay="400"><i class="material-icons edit-button-icon">edit_square</i>
-                </button>
+                </button> -->
             </div>
         </div>
     </div>
@@ -66,9 +66,9 @@
     <div class="relative-wrapper">
         <div class="medication-box">
             <div class="medication-tile animated fadeInRight" *ngFor="let med of visitMeds">
-                <button mat-icon-button class="edit-button" matTooltip="Edit Perscription" matTooltipPosition="below"
+                <!-- <button mat-icon-button class="edit-button" matTooltip="Edit Perscription" matTooltipPosition="below"
                     matTooltipShowDelay="400"><i class="material-icons edit-button-icon">edit_square</i>
-                </button>
+                </button> -->
                 <div style="margin-top: 4px;">
                     <mat-form-field class="medication-field">
                         <mat-label>Medication</mat-label>

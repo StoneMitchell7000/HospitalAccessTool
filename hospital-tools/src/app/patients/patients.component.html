@@ -30,9 +30,6 @@
                     <div>Date of Birth</div>
                     <div>Phone</div>
                     <div>Email</div>
-                    <div>Address</div>
-                    <div>SSN</div>
-                    <div>Insurance Provider</div>
                     <div style="border-top-right-radius: 4px;"></div>
                 </div>
                 <div class="patient-scroll-container">
@@ -43,9 +40,6 @@
                             <div>{{patient.formatDate | date:'MM/dd/yyyy'}}</div>
                             <div>{{patient.phone | phoneFormat}}</div>
                             <div>{{patient.email}}</div>
-                            <div>{{patient.address}}</div>
-                            <div>{{patient.ssn}}</div>
-                            <div>{{patient.insurance}}</div>
                             <div class="clickrow" matTooltip="Click to See Patient Details" matTooltipPosition="below"
                                 matTooltipShowDelay="600" matRipple [matRippleColor]="'#ff676726'" (click)="openDrilldown(patient)"></div>
                         </div>

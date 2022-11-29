@@ -32,24 +32,6 @@
             <input matInput [(ngModel)]="newPatient.email">
         </mat-form-field>
     </div>
-    <div>
-        <mat-form-field class="new-input-field">
-            <mat-label>Address</mat-label>
-            <input matInput [(ngModel)]="newPatient.address">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field class="new-input-field">
-            <mat-label>SSN</mat-label>
-            <input matInput [(ngModel)]="newPatient.ssn" type="number">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field class="new-input-field">
-            <mat-label>Insurance Provider</mat-label>
-            <input matInput [(ngModel)]="newPatient.insurance">
-        </mat-form-field>
-    </div>
     <div class="bottom-bar">
         <button mat-button class="save-button" (click)="close(true)">Create Patient
             <mat-icon matSuffix>save</mat-icon>

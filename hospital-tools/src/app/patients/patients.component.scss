@@ -56,7 +56,7 @@
 }
 
 .patient-header {
-    grid-template-columns: 1fr 1fr 1fr 1fr 2fr 2fr 1fr 2fr 1em !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr 1em !important;
 }
 
 .patient-header div {
@@ -73,7 +73,7 @@
     height: min-content;
     width: 100%;
     grid-template-rows: min-content;
-    grid-template-columns: 1fr 1fr 1fr 1fr 2fr 2fr 1fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
     column-gap: 3px;
     margin-bottom: 3px;
 }

@@ -80,7 +80,6 @@ export class PatientsComponent implements OnInit {
     let temp = {
       patient_id: 0, first_name: 'Testy', last_name: 'Testerson'
       , date_of_birth: new Date(), phone: 1234567890, email: 'testy@gmail.com'
-      , address: '123 Test St', ssn: 123456789, insurance: 'McInsurance'
     };
     for (let i = 0; i < 30; i++) {
       temp.patient_id++;
