@@ -23,7 +23,7 @@
     margin-top: 30px !important;
 }
 
-.patient-table {
+.procedure-table {
     background-color: #e2e2e2;
     position: absolute;
     top: 8px;
@@ -36,17 +36,17 @@
     filter: drop-shadow(2px 2px 2px #222222a1);
 }
 
-.patient-relative-wrapper {
+.procedure-relative-wrapper {
     position: relative;
     height: 100%;
     width: 100%;
 }
 
-.patient-header {
-    grid-template-columns: 1fr 1fr 1fr 1fr 2fr 2fr 1fr 2fr 1em !important;
+.procedure-header {
+    grid-template-columns: 3fr 3fr 3fr 3fr 1fr 1fr 6fr 1em !important;
 }
 
-.patient-header div {
+.procedure-header div {
     background-color: #ff4f4f !important;
     color: white !important;
     font-weight: bold;
@@ -54,24 +54,24 @@
     text-overflow: ellipsis;
 }
 
-.patient-row {
+.procedure-row {
     position: relative;
     display: grid;
     height: min-content;
     width: 100%;
     grid-template-rows: min-content;
-    grid-template-columns: 1fr 1fr 1fr 1fr 2fr 2fr 1fr 2fr;
+    grid-template-columns: 3fr 3fr 3fr 3fr 1fr 1fr 6fr;
     column-gap: 3px;
     margin-bottom: 3px;
 }
 
-.patient-row div {
+.procedure-row div {
     padding: 5px;
     min-width: none;
     background-color: #ffffff;
 }
 
-.patient-scroll-container {
+.procedure-scroll-container {
     position: absolute;
     top: 33px;
     left: 0;
@@ -84,17 +84,17 @@
     border-bottom-left-radius: 4px;
 }
 
-.patient-scroll-container::-webkit-scrollbar {
+.procedure-scroll-container::-webkit-scrollbar {
     width: 1em;
 }
 
-.patient-scroll-container::-webkit-scrollbar-thumb {
+.procedure-scroll-container::-webkit-scrollbar-thumb {
     background-color: #c6c4c4;
     border: 1px solid white;
     border-bottom-right-radius: 4px;
 }
 
-.patient-scroll-container::-webkit-scrollbar-track {
+.procedure-scroll-container::-webkit-scrollbar-track {
     border-bottom-right-radius: 4px;
 }
 
@@ -154,7 +154,7 @@
 
 .medication-tile {
     height: 100%;
-    width: 220px;
+    width: 200px;
     background-color: white;
     margin-right: 4px;
     display: inline-block;
@@ -246,6 +246,6 @@
     margin-top: -14px;
 }
 
-::ng-deep .mat-tooltip  {
+::ng-deep .mat-tooltip {
     white-space: pre-line !important;
-  }
+}

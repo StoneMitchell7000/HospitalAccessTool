@@ -1,0 +1,55 @@
+<div class="popup-title">New Perscription</div>
+<div class="new-med-grid">
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Medication</mat-label>
+            <mat-select [(ngModel)]="newPrescription.medicationId">
+                <mat-option *ngFor="let med of meds" [value]="med.medicationId" matTooltip="Used For: {{med.usedFor}}
+                                Reccomended Dose: {{med.recommendedDose}}
+                                Reccomended Frequency: {{med.recommendedFrequency}}" matTooltipPosition="right"
+                    matTooltipShowDelay="0">
+                    {{med.medicationName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>First Name</mat-label>
+            <input matInput [(ngModel)]="newPrescription.dose">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput [(ngModel)]="newPrescription.frequency">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Start Date</mat-label>
+            <input matInput [(ngModel)]="newPrescription.startDate" [matDatepicker]="picker" (click)="picker.open()"
+                readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="new-input-field">
+            <mat-label>Date Of Birth</mat-label>
+            <input matInput [(ngModel)]="newPrescription.endDate" [matDatepicker]="picker2" (click)="picker2.open()"
+                readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="bottom-bar">
+        <button mat-button class="save-button" (click)="close(true)">Save Perscription
+            <mat-icon matSuffix>save</mat-icon>
+        </button>
+
+        <button mat-button class="cancel-button" (click)="close(false)">Cancel
+            <mat-icon matSuffix>close</mat-icon>
+        </button>
+    </div>
+</div>

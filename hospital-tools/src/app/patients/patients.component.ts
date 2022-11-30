@@ -74,6 +74,7 @@ export class PatientsComponent implements OnInit {
   }
 
   loadPatients(): void {
+    this.patients = [];
     this.progress.start();
     // load all patients here w/ sql
     // temp

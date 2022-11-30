@@ -4,7 +4,9 @@ import { NgProgress, NgProgressRef } from '@ngx-progressbar/core';
 import { EditVisitComponent } from '../edit-visit/edit-visit.component';
 import { Medication } from '../models/medication';
 import { Prescription } from '../models/prescription';
+import { Procedure } from '../models/procedure';
 import { Visit } from '../models/visit';
+import { NewPrescriptionComponent } from '../new-prescription/new-prescription.component';
 
 @Component({
   selector: 'app-patient-drilldown',
@@ -14,7 +16,7 @@ import { Visit } from '../models/visit';
 export class PatientDrilldownComponent implements OnInit {
   visits: Visit[] = new Array();
   visitMeds: Prescription[] = new Array();
-  // procedures: Procedure[] = new Array();
+  visitProcedures: Procedure[] = new Array();
   availableMeds: Medication[] = new Array();
   progress: NgProgressRef;
   selectedVisitId = 0;
@@ -68,6 +70,7 @@ export class PatientDrilldownComponent implements OnInit {
 
   loadProcsAndMeds(visitId: number): void {
     this.visitMeds = [];
+    this.visitProcedures = [];
     this.progress.start();
     // load prescriptions here w/ sql
     // temp
@@ -83,6 +86,25 @@ export class PatientDrilldownComponent implements OnInit {
       temp.prescription_id++;
       temp.medication_id++;
       this.visitMeds.unshift(new Prescription(temp));
+    }
+
+    // put inside of query return
+    this.progress.complete();
+
+    // load prescriptions here w/ sql
+    // temp
+    let temp2 = {
+      procedure_id: 0, visit_id: visitId, performed_by: 1,
+      date_time: new Date(), department: "asdf", procedure: "procedure 1",
+      floor_number: 2, room_number: 12, results: "asdf",
+      notes: "asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf "
+    };
+    for (let i = 0; i < 5; i++) {
+      if (i > 2) {
+        temp2.procedure = "procedure 2";
+      }
+      temp2.procedure_id++;
+      this.visitProcedures.push(new Procedure(temp2));
     }
 
     // put inside of query return
@@ -151,6 +173,7 @@ export class PatientDrilldownComponent implements OnInit {
           // new visit
 
           result.patientId = this.patient.patientId;
+          this.visits.unshift(result);
           // call insert sql
           // put inside of query return
           this.progress.complete();
@@ -160,8 +183,22 @@ export class PatientDrilldownComponent implements OnInit {
     });
   }
 
-  updateMed(medId: number): void {
-
+  addMed(): void {
+    const dialog = this.editPatientDialog.open(NewPrescriptionComponent, {
+      disableClose: true,
+      data: this.availableMeds
+    });
+    dialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.progress.start();
+        result.visitId = this.selectedVisitId;
+        this.visitMeds.unshift(result);
+        // call insert sql
+        // put inside of query return
+        this.progress.complete();
+        this.loadProcsAndMeds(this.selectedVisitId);
+      }
+    });
   }
 
   updateProc(procId: number): void {

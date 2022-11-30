@@ -27,30 +27,30 @@
         </button>
     </div>
     <div class="relative-wrapper">
-        <div class="patient-table animated fadeIn">
-            <div class="patient-relative-wrapper">
-                <div class="patient-header patient-row">
-                    <div style="border-top-left-radius: 4px;">Last Name</div>
-                    <div>First Name</div>
-                    <div>Date of Birth</div>
-                    <div>Phone</div>
-                    <div>Email</div>
-                    <div>Address</div>
-                    <div>SSN</div>
-                    <div>Insurance Provider</div>
+        <div class="procedure-table animated fadeIn">
+            <div class="procedure-relative-wrapper">
+                <div class="procedure-header procedure-row">
+                    <div style="border-top-left-radius: 4px;">Procedure</div>
+                    <div>Date & Time</div>
+                    <div>Department</div>
+                    <div>Results</div>
+                    <!-- <div>Performed By</div> -->
+                    <div>Floor #</div>
+                    <div>Room #</div>
+                    <div>Notes</div>
                     <div style="border-top-right-radius: 4px;"></div>
                 </div>
-                <div class="patient-scroll-container">
-                    <div>
-                        <div class="patient-row animated fadeInUp">
-                            <div>{{patient.lastName}}</div>
-                            <div>{{patient.firstName}}</div>
-                            <div>{{patient.formatDate | date:'MM/dd/yyyy'}}</div>
-                            <div>{{patient.phone | phoneFormat}}</div>
-                            <div>{{patient.email}}</div>
-                            <div>{{patient.address}}</div>
-                            <div>{{patient.ssn}}</div>
-                            <div>{{patient.insurance}}</div>
+                <div class="procedure-scroll-container">
+                    <div *ngFor="let proc of visitProcedures">
+                        <div class="procedure-row animated fadeInUp">
+                            <div>{{proc.procedure}}</div>
+                            <div>{{proc.dateTime | date:'MM/dd/yyyy hh:mm a'}}</div>
+                            <div>{{proc.department}}</div>
+                            <div>{{proc.results}}</div>
+                            <!-- <div>{{proc.performedBy}}</div> -->
+                            <div>{{proc.floorNumber}}</div>
+                            <div>{{proc.roomNumber}}</div>
+                            <div>{{proc.notes}}</div>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
     </div>
     <div>
         <div class="title-block">Perscriptions</div>
-        <button mat-icon-button class="add-button" matTooltip="Add Perscription" matTooltipPosition="right"
+        <button (click)="addMed()" mat-icon-button class="add-button" matTooltip="Add Perscription" matTooltipPosition="right"
             matTooltipShowDelay="400"><i class="material-icons">add_circle</i>
         </button>
     </div>
@@ -72,7 +72,7 @@
                 <div style="margin-top: 4px;">
                     <mat-form-field class="medication-field">
                         <mat-label>Medication</mat-label>
-                        <mat-select [(ngModel)]="med.medicationId">
+                        <mat-select [(ngModel)]="med.medicationId" readonly [disabled]="true">
                             <mat-option *ngFor="let availableMed of availableMeds" [value]="availableMed.medicationId"
                                 matTooltip="Used For: {{availableMed.usedFor}}
                                             Reccomended Dose: {{availableMed.recommendedDose}}
@@ -86,30 +86,30 @@
                 <div>
                     <mat-form-field class="medication-field">
                         <mat-label>Dose</mat-label>
-                        <input matInput [(ngModel)]="med.dose">
+                        <input matInput [(ngModel)]="med.dose" readonly>
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="medication-field">
                         <mat-label>Frequency</mat-label>
-                        <input matInput [(ngModel)]="med.frequency">
+                        <input matInput [(ngModel)]="med.frequency" readonly>
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="medication-field">
                         <mat-label>Start Date</mat-label>
-                        <input matInput [matDatepicker]="picker" (click)="picker.open()" readonly
-                            [(ngModel)]="med.startDate">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <input matInput [matDatepicker]="picker" readonly
+                            [ngModel]="med.startDate">
+                        <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="medication-field">
                         <mat-label>End Date</mat-label>
-                        <input matInput [matDatepicker]="picker2" (click)="picker2.open()" readonly
-                            [(ngModel)]="med.endDate">
-                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <input matInput [matDatepicker]="picker2" readonly
+                            [ngModel]="med.endDate">
+                        <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
                 </div>

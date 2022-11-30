@@ -23,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { EditVisitComponent } from './edit-visit/edit-visit.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NewPrescriptionComponent } from './new-prescription/new-prescription.component';
 
 export const options: Partial<IConfig> = {
 };
@@ -35,7 +36,8 @@ export const options: Partial<IConfig> = {
     PhoneFormatPipe,
     NewPatientComponent,
     PatientDrilldownComponent,
-    EditVisitComponent
+    EditVisitComponent,
+    NewPrescriptionComponent
   ],
   imports: [
     BrowserModule,
