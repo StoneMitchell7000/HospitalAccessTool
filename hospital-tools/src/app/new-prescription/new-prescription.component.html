@@ -15,13 +15,13 @@
     </div>
     <div>
         <mat-form-field class="new-input-field">
-            <mat-label>First Name</mat-label>
+            <mat-label>Dose</mat-label>
             <input matInput [(ngModel)]="newPrescription.dose">
         </mat-form-field>
     </div>
     <div>
         <mat-form-field class="new-input-field">
-            <mat-label>Last Name</mat-label>
+            <mat-label>Frequency</mat-label>
             <input matInput [(ngModel)]="newPrescription.frequency">
         </mat-form-field>
     </div>
@@ -36,7 +36,7 @@
     </div>
     <div>
         <mat-form-field class="new-input-field">
-            <mat-label>Date Of Birth</mat-label>
+            <mat-label>End Date</mat-label>
             <input matInput [(ngModel)]="newPrescription.endDate" [matDatepicker]="picker2" (click)="picker2.open()"
                 readonly>
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
