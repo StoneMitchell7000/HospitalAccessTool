@@ -7,6 +7,7 @@ import { Prescription } from '../models/prescription';
 import { Procedure } from '../models/procedure';
 import { Visit } from '../models/visit';
 import { NewPrescriptionComponent } from '../new-prescription/new-prescription.component';
+import { NewProcedureComponent } from '../new-procedure/new-procedure.component';
 
 @Component({
   selector: 'app-patient-drilldown',
@@ -26,7 +27,7 @@ export class PatientDrilldownComponent implements OnInit {
     public dialogRef: MatDialogRef<PatientDrilldownComponent>,
     @Inject(MAT_DIALOG_DATA) public patient: any,
     private progressService: NgProgress,
-    public editPatientDialog: MatDialog
+    public matDialog: MatDialog
   ) {
     this.progress = this.progressService.ref('myProgress');
   }
@@ -152,7 +153,7 @@ export class PatientDrilldownComponent implements OnInit {
   updateVisit(visit: Visit | number): void {
     // dual purpose for new and edit
     let sentVisit = new Visit(visit);
-    const dialog = this.editPatientDialog.open(EditVisitComponent, {
+    const dialog = this.matDialog.open(EditVisitComponent, {
       disableClose: true,
       data: sentVisit
     });
@@ -184,7 +185,7 @@ export class PatientDrilldownComponent implements OnInit {
   }
 
   addMed(): void {
-    const dialog = this.editPatientDialog.open(NewPrescriptionComponent, {
+    const dialog = this.matDialog.open(NewPrescriptionComponent, {
       disableClose: true,
       data: this.availableMeds
     });
@@ -201,7 +202,24 @@ export class PatientDrilldownComponent implements OnInit {
     });
   }
 
-  updateProc(procId: number): void {
+  addProc(): void {
+    const dialog = this.matDialog.open(NewProcedureComponent, {
+      disableClose: true
+    });
+    dialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.progress.start();
+        result.visitId = this.selectedVisitId;
+        this.visitProcedures.unshift(result);
+        // call insert sql
+        // put inside of query return
+        this.progress.complete();
+        this.loadProcsAndMeds(this.selectedVisitId);
+      }
+    });
+  }
 
+  goBack(): void {
+    this.dialogRef.close();
   }
 }

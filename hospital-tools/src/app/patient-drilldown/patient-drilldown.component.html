@@ -4,6 +4,11 @@
         <button (click)="updateVisit(0)" mat-icon-button class="add-button" matTooltip="Add Visit"
             matTooltipPosition="right" matTooltipShowDelay="400"><i class="material-icons">add_circle</i>
         </button>
+        <button mat-button class="back-button" (click)="goBack()" matRipple [matRippleUnbounded]="false"
+            [matRippleCentered]="true" [matRippleColor]="'rgba(255, 255, 255, 100)'">
+            <mat-icon matSuffix>arrow_back_ios</mat-icon>
+            Back
+        </button>
     </div>
     <div class="relative-wrapper">
         <div class="visits-box">
@@ -44,7 +49,7 @@
                     <div *ngFor="let proc of visitProcedures">
                         <div class="procedure-row animated fadeInUp">
                             <div>{{proc.procedure}}</div>
-                            <div>{{proc.dateTime | date:'MM/dd/yyyy hh:mm a'}}</div>
+                            <div>{{proc.formatDate | date:'MM/dd/yyyy hh:mm a'}}</div>
                             <div>{{proc.department}}</div>
                             <div>{{proc.results}}</div>
                             <!-- <div>{{proc.performedBy}}</div> -->
@@ -59,8 +64,8 @@
     </div>
     <div>
         <div class="title-block">Perscriptions</div>
-        <button (click)="addMed()" mat-icon-button class="add-button" matTooltip="Add Perscription" matTooltipPosition="right"
-            matTooltipShowDelay="400"><i class="material-icons">add_circle</i>
+        <button (click)="addMed()" mat-icon-button class="add-button" matTooltip="Add Perscription"
+            matTooltipPosition="right" matTooltipShowDelay="400"><i class="material-icons">add_circle</i>
         </button>
     </div>
     <div class="relative-wrapper">
@@ -98,8 +103,7 @@
                 <div>
                     <mat-form-field class="medication-field">
                         <mat-label>Start Date</mat-label>
-                        <input matInput [matDatepicker]="picker" readonly
-                            [ngModel]="med.startDate">
+                        <input matInput [matDatepicker]="picker" readonly [ngModel]="med.startDate">
                         <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -107,8 +111,7 @@
                 <div>
                     <mat-form-field class="medication-field">
                         <mat-label>End Date</mat-label>
-                        <input matInput [matDatepicker]="picker2" readonly
-                            [ngModel]="med.endDate">
+                        <input matInput [matDatepicker]="picker2" readonly [ngModel]="med.endDate">
                         <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>

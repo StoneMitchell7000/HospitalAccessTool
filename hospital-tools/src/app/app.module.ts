@@ -24,6 +24,7 @@ import { EditVisitComponent } from './edit-visit/edit-visit.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NewPrescriptionComponent } from './new-prescription/new-prescription.component';
+import { NewProcedureComponent } from './new-procedure/new-procedure.component';
 
 export const options: Partial<IConfig> = {
 };
@@ -37,7 +38,8 @@ export const options: Partial<IConfig> = {
     NewPatientComponent,
     PatientDrilldownComponent,
     EditVisitComponent,
-    NewPrescriptionComponent
+    NewPrescriptionComponent,
+    NewProcedureComponent
   ],
   imports: [
     BrowserModule,

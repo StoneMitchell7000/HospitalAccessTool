@@ -249,3 +249,20 @@
 ::ng-deep .mat-tooltip {
     white-space: pre-line !important;
 }
+
+.back-button {
+    float: right;
+    background-color: #ff4f4f;
+    color: white;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-right: 28px;
+    padding-left: 10px;
+    -webkit-filter: drop-shadow(2px 2px 2px #222222a1);
+    filter: drop-shadow(2px 2px 2px #222222a1);
+    transition: .25s;
+}
+
+.back-button:hover {
+    background-color: #ff6767be;
+}

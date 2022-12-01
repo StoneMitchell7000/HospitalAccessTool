@@ -3,19 +3,21 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from '../models/employee';
 import { NgProgress, NgProgressRef } from '@ngx-progressbar/core';
+import { Procedure } from '../models/procedure';
 
 @Component({
-  selector: 'app-edit-visit',
-  templateUrl: './edit-visit.component.html',
-  styleUrls: ['./edit-visit.component.scss']
+  selector: 'app-new-procedure',
+  templateUrl: './new-procedure.component.html',
+  styleUrls: ['./new-procedure.component.scss']
 })
-export class EditVisitComponent implements OnInit {
+export class NewProcedureComponent implements OnInit {
   employeeList: Employee[] = new Array();
+  procedure = new Procedure();
   progress: NgProgressRef;
 
   constructor(
-    public dialogRef: MatDialogRef<EditVisitComponent>,
-    @Inject(MAT_DIALOG_DATA) public visit: any,
+    public dialogRef: MatDialogRef<NewProcedureComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private progressService: NgProgress,
     private snackBar: MatSnackBar
   ) {
@@ -51,12 +53,12 @@ export class EditVisitComponent implements OnInit {
   close(save: boolean): void {
     if (!save) {
       this.dialogRef.close();
-    } else if (!this.visit.inDate || !this.visit.outDate || !this.visit.visitType ||
-      !this.visit.visitReason || !this.visit.department || !this.visit.floorNumber ||
-      !this.visit.roomNumber || !this.visit.assignedNurse) {
+    } else if (!this.procedure.performedBy || !this.procedure.dateTime || !this.procedure.department ||
+      !this.procedure.procedure || !this.procedure.floorNumber ||
+      !this.procedure.roomNumber || !this.procedure.results || !this.procedure.notes) {
       this.openSnackBar('Please fill out all fields before saving.', 3000);
     } else {
-      this.dialogRef.close(this.visit);
+      this.dialogRef.close(this.procedure);
     }
   }
 
