@@ -10,6 +10,11 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.loadCharts();
+  }
+
+  loadCharts(): void {
+    // sql x3 XD <3 ;) 8==========D
   }
 
 }
