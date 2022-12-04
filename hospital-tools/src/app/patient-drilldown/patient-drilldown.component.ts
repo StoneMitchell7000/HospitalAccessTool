@@ -62,44 +62,18 @@ export class PatientDrilldownComponent implements OnInit {
   loadProcsAndMeds(visitId: number): void {
     this.visitMeds = [];
     this.visitProcedures = [];
+
     this.progress.start();
-    // load prescriptions here w/ sql
-    // temp
-    let temp = {
-      prescription_id: 0, visit_id: visitId, medication_id: 0,
-      dose: "2gal", frequency: "1 every 5min", start_date: new Date(),
-      end_date: new Date()
-    };
-    for (let i = 0; i < 5; i++) {
-      if (i > 2) {
-        temp.dose = "50 CC's";
-      }
-      temp.prescription_id++;
-      temp.medication_id++;
-      this.visitMeds.unshift(new Prescription(temp));
-    }
+    this.dataService.loadPrescriptions(visitId).subscribe(resp => {
+      this.visitMeds = resp;
+      this.progress.complete();
+    });
 
-    // put inside of query return
-    this.progress.complete();
-
-    // load prescriptions here w/ sql
-    // temp
-    let temp2 = {
-      procedure_id: 0, visit_id: visitId, performed_by: 1,
-      date_time: new Date(), department: "asdf", procedure: "procedure 1",
-      floor_number: 2, room_number: 12, results: "asdf",
-      notes: "asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf "
-    };
-    for (let i = 0; i < 5; i++) {
-      if (i > 2) {
-        temp2.procedure = "procedure 2";
-      }
-      temp2.procedure_id++;
-      this.visitProcedures.push(new Procedure(temp2));
-    }
-
-    // put inside of query return
-    this.progress.complete();
+    this.progress.start();
+    this.dataService.loadProcedures(visitId).subscribe(resp => {
+      this.visitProcedures = resp;
+      this.progress.complete();
+    });
   }
 
   getMedList(): void {

@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from '../models/employee';
 import { NgProgress, NgProgressRef } from '@ngx-progressbar/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-edit-visit',
@@ -17,7 +18,8 @@ export class EditVisitComponent implements OnInit {
     public dialogRef: MatDialogRef<EditVisitComponent>,
     @Inject(MAT_DIALOG_DATA) public visit: any,
     private progressService: NgProgress,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dataService: DataService
   ) {
     this.progress = this.progressService.ref('myProgress');
   }
@@ -28,24 +30,10 @@ export class EditVisitComponent implements OnInit {
 
   loadEmployeeList(): void {
     this.progress.start();
-    // load employees here w/ sql
-    // temp
-    let temp = [
-      {
-        employee_id: 1, first_name: "Employee", last_name: "Jones",
-        job_title: "nurse", phone_number: 1234567890, email: "employee.jones@email.com"
-      },
-      {
-        employee_id: 2, first_name: "Asdf", last_name: "McGee",
-        job_title: "Radiologist", phone_number: 4567890123, email: "asdf@email.com"
-      }
-    ];
-    for (let i = 0; i < 2; i++) {
-      this.employeeList.push(new Employee(temp[i]));
-    }
-
-    // put inside of query return
-    this.progress.complete();
+    this.dataService.loadEmployeeList().subscribe(resp => {
+      this.employeeList = resp;
+      this.progress.complete();
+    });
   }
 
   close(save: boolean): void {
