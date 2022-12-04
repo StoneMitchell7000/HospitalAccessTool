@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgProgress, NgProgressRef } from '@ngx-progressbar/core';
+import { DataService } from '../data.service';
 import { EditVisitComponent } from '../edit-visit/edit-visit.component';
 import { Medication } from '../models/medication';
+import { Patient } from '../models/patient';
 import { Prescription } from '../models/prescription';
 import { Procedure } from '../models/procedure';
 import { Visit } from '../models/visit';
@@ -25,9 +27,10 @@ export class PatientDrilldownComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<PatientDrilldownComponent>,
-    @Inject(MAT_DIALOG_DATA) public patient: any,
+    @Inject(MAT_DIALOG_DATA) public patient: Patient,
     private progressService: NgProgress,
-    public matDialog: MatDialog
+    public matDialog: MatDialog,
+    private dataService: DataService
   ) {
     this.progress = this.progressService.ref('myProgress');
   }
@@ -40,24 +43,11 @@ export class PatientDrilldownComponent implements OnInit {
   loadVisits(): void {
     this.visits = [];
     this.progress.start();
-    // load visits here w/ sql
-    // temp
-    let temp = {
-      visit_id: 0, patient_id: this.patient.patientId, in_date: new Date(),
-      out_date: new Date(), visit_type: "test type", visit_reason: "test reason",
-      scheduled: true, department: "test dept", floor_number: 3, room_number: 55,
-      assigned_nurse: 1, notes: "asdf"
-    };
-    for (let i = 0; i < 5; i++) {
-      temp.visit_id++;
-      temp.visit_type = "type" + (i + 1).toString();
-      this.visits.unshift(new Visit(temp));
-    }
-
-    // put inside of query return
-    this.progress.complete();
-
-    this.selectVisit(this.visits[0]);
+    this.dataService.loadPatientVisits(this.patient.patientId).subscribe(resp => {
+      this.visits = resp;
+      this.progress.complete();
+      this.selectVisit(this.visits[0]);
+    });
   }
 
   selectVisit(visit: Visit): void {

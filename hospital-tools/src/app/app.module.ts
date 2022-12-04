@@ -25,6 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NewPrescriptionComponent } from './new-prescription/new-prescription.component';
 import { NewProcedureComponent } from './new-procedure/new-procedure.component';
+import { DataService } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 export const options: Partial<IConfig> = {
 };
@@ -59,9 +61,12 @@ export const options: Partial<IConfig> = {
     MatNativeDateModule,
     MatTooltipModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

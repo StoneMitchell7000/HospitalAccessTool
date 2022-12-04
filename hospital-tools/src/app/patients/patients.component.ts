@@ -6,6 +6,7 @@ import { Patient } from '../models/patient';
 import { NewPatientComponent } from '../new-patient/new-patient.component';
 import { NgProgress, NgProgressRef } from '@ngx-progressbar/core';
 import { PatientDrilldownComponent } from '../patient-drilldown/patient-drilldown.component';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-patients',
@@ -24,6 +25,7 @@ export class PatientsComponent implements OnInit {
   constructor(
     public newPatientDialog: MatDialog,
     private progressService: NgProgress,
+    private dataService: DataService
   ) {
     this.progress = this.progressService.ref('myProgress');
   }
@@ -76,30 +78,11 @@ export class PatientsComponent implements OnInit {
   loadPatients(): void {
     this.patients = [];
     this.progress.start();
-    // load all patients here w/ sql
-    // temp
-    let temp = {
-      patient_id: 0, first_name: 'Testy', last_name: 'Testerson'
-      , date_of_birth: new Date(), phone: 1234567890, email: 'testy@gmail.com'
-    };
-    for (let i = 0; i < 30; i++) {
-      temp.patient_id++;
-      temp.first_name = 'Testy' + temp.patient_id.toString();
-      temp.last_name = 'Testerson' + temp.patient_id.toString();
-      if (i < 10) {
-        temp.phone = 1231231231;
-      } else if (i < 20) {
-        temp.phone = 4564564564;
-      } else {
-        temp.phone = 7897897897;
-      }
-      this.patients.unshift(new Patient(temp));
-    }
-
-    // put inside of query return
-    this.progress.complete();
-
-    this.search();
+    this.dataService.loadPatients().subscribe(resp => {
+      this.patients = resp;
+      this.progress.complete();
+      this.search();
+    });
   }
 
   createPatient(): void {
@@ -117,11 +100,11 @@ export class PatientsComponent implements OnInit {
 
   savePatient(newPatient: Patient): void {
     this.progress.start();
-    // save w/ sql
-
-    // put inside of query return
-    this.progress.complete();
-    this.loadPatients();
+    this.dataService.savePatient(newPatient).subscribe(resp => {
+      newPatient.patientId = resp;
+      this.progress.complete();
+      this.loadPatients();
+    });
   }
 
   openDrilldown(patient: Patient): void {

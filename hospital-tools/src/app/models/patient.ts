@@ -3,7 +3,7 @@ export class Patient {
     public firstName: string;
     public lastName: string;
     public dateOfBirth: Date;
-    public phone: number;
+    public phone?: number;
     public email: string;
 
     constructor(obj?: any) {
