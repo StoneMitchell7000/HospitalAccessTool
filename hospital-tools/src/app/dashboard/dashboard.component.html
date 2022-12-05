@@ -20,24 +20,10 @@
                     <div style="border-top-right-radius: 4px;"></div>
                 </div>
                 <div class="dashboard-scroll-container">
-                    <!-- <div *ngFor="">
+                    <div *ngFor="let proc of popularProcedures">
                         <div class="dashboard-row animated fadeInUp">
-                            <div>{{}}</div>
-                            <div>{{}}</div>
-                        </div>
-                    </div> -->
-                    <div>
-                        <div class="dashboard-row animated fadeInUp">
-                            <div>asdf</div>
-                            <div>asdf</div>
-                        </div>
-                        <div class="dashboard-row animated fadeInUp">
-                            <div>asdf</div>
-                            <div>asdf</div>
-                        </div>
-                        <div class="dashboard-row animated fadeInUp">
-                            <div>asdf</div>
-                            <div>asdf</div>
+                            <div>{{proc.type}}</div>
+                            <div>{{proc.number}}</div>
                         </div>
                     </div>
                 </div>
@@ -53,24 +39,10 @@
                     <div style="border-top-right-radius: 4px;"></div>
                 </div>
                 <div class="dashboard-scroll-container">
-                    <!-- <div *ngFor="">
+                    <div *ngFor="let reason of admissionReasons">
                         <div class="dashboard-row animated fadeInUp">
-                            <div>{{}}</div>
-                            <div>{{}}</div>
-                        </div>
-                    </div> -->
-                    <div>
-                        <div class="dashboard-row animated fadeInUp">
-                            <div>asdf</div>
-                            <div>asdf</div>
-                        </div>
-                        <div class="dashboard-row animated fadeInUp">
-                            <div>asdf</div>
-                            <div>asdf</div>
-                        </div>
-                        <div class="dashboard-row animated fadeInUp">
-                            <div>asdf</div>
-                            <div>asdf</div>
+                            <div>{{reason.reason}}</div>
+                            <div>{{reason.number}}</div>
                         </div>
                     </div>
                 </div>
@@ -93,28 +65,11 @@
                     <div style="border-top-right-radius: 4px;"></div>
                 </div>
                 <div class="dashboard-scroll-container">
-                    <!-- <div *ngFor="">
+                    <div *ngFor="let day of admittedDischarged">
                         <div class="dashboard-row animated fadeInUp">
-                            <div>{{}}</div>
-                            <div>{{}}</div>
-                            <div>{{}}</div>
-                        </div>
-                    </div> -->
-                    <div>
-                        <div class="dashboard-row animated fadeInUp">
-                            <div>asdf</div>
-                            <div>asdf</div>
-                            <div>asdf</div>
-                        </div>
-                        <div class="dashboard-row animated fadeInUp">
-                            <div>asdf</div>
-                            <div>asdf</div>
-                            <div>asdf</div>
-                        </div>
-                        <div class="dashboard-row animated fadeInUp">
-                            <div>asdf</div>
-                            <div>asdf</div>
-                            <div>asdf</div>
+                            <div>{{day.formatDate | date:'MM/dd/yyyy'}}</div>
+                            <div>{{day.admitted}}</div>
+                            <div>{{day.discharged}}</div>
                         </div>
                     </div>
                 </div>

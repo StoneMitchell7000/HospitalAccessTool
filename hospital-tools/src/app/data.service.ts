@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Employee } from './models/employee';
+import { InOutRow } from './models/in-out-row';
 import { Medication } from './models/medication';
 import { Patient } from './models/patient';
 import { Prescription } from './models/prescription';
 import { Procedure } from './models/procedure';
+import { ProcedureRow } from './models/procedure-row';
+import { ReasonRow } from './models/reason-row';
 import { Visit } from './models/visit';
 
 @Injectable({
@@ -268,56 +271,77 @@ export class DataService {
   }
 
   dummyPopularProcedures(): any {
-    let tempEmployees = new Array<Employee>();
+    let rows = new Array<ProcedureRow>();
     let temp = [
       {
-        employee_id: 1, first_name: "Employee", last_name: "Jones",
-        job_title: "nurse", phone_number: 1234567890, email: "employee.jones@email.com"
+        type: "X-ray", number: 10
       },
       {
-        employee_id: 2, first_name: "Asdf", last_name: "McGee",
-        job_title: "Radiologist", phone_number: 4567890123, email: "asdf@email.com"
+        type: "Apendectime", number: 7
+      },
+      {
+        type: "Cast", number: 7
+      },
+      {
+        type: "Heart Surgery", number: 6
+      },
+      {
+        type: "Stitches", number: 5
       }
     ];
-    for (let i = 0; i < 2; i++) {
-      tempEmployees.push(new Employee(temp[i]));
+    for (let i = 0; i < 5; i++) {
+      rows.push(new ProcedureRow(temp[i]));
     }
-    return tempEmployees;
+    return rows;
   }
 
   dummyAdmissionReasons(): any {
-    let tempEmployees = new Array<Employee>();
+    let rows = new Array<ReasonRow>();
     let temp = [
       {
-        employee_id: 1, first_name: "Employee", last_name: "Jones",
-        job_title: "nurse", phone_number: 1234567890, email: "employee.jones@email.com"
+        reason: "Broken Bone", number: 12
       },
       {
-        employee_id: 2, first_name: "Asdf", last_name: "McGee",
-        job_title: "Radiologist", phone_number: 4567890123, email: "asdf@email.com"
+        reason: "Heart Attack", number: 8
+      },
+      {
+        reason: "Alergic Reaction", number: 5
+      },
+      {
+        reason: "Food Poisoning", number: 5
+      },
+      {
+        reason: "Rash", number: 2
       }
     ];
-    for (let i = 0; i < 2; i++) {
-      tempEmployees.push(new Employee(temp[i]));
+    for (let i = 0; i < 5; i++) {
+      rows.push(new ReasonRow(temp[i]));
     }
-    return tempEmployees;
+    return rows;
   }
 
   dummyAdmittedDischarged(): any {
-    let tempEmployees = new Array<Employee>();
+    let rows = new Array<InOutRow>();
     let temp = [
       {
-        employee_id: 1, first_name: "Employee", last_name: "Jones",
-        job_title: "nurse", phone_number: 1234567890, email: "employee.jones@email.com"
+        date: new Date(), admitted: 5, discharged: 5
       },
       {
-        employee_id: 2, first_name: "Asdf", last_name: "McGee",
-        job_title: "Radiologist", phone_number: 4567890123, email: "asdf@email.com"
+        date: new Date(), admitted: 3, discharged: 2
+      },
+      {
+        date: new Date(), admitted: 5, discharged: 10
+      },
+      {
+        date: new Date(), admitted: 19, discharged: 7
+      },
+      {
+        date: new Date(), admitted: 4, discharged: 3
       }
     ];
-    for (let i = 0; i < 2; i++) {
-      tempEmployees.push(new Employee(temp[i]));
+    for (let i = 0; i < 5; i++) {
+      rows.push(new InOutRow(temp[i]));
     }
-    return tempEmployees;
+    return rows;
   }
 }
