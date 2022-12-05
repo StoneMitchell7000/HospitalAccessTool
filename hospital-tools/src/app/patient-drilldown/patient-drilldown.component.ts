@@ -78,40 +78,10 @@ export class PatientDrilldownComponent implements OnInit {
 
   getMedList(): void {
     this.progress.start();
-    // load available meds here w/ sql
-    // temp
-    let temp = [
-      {
-        medication_id: 1, medication_name: "moderna1", used_for: "gay1",
-        recommended_dose: "uhh idk1", recommended_frequency: "asdfasdfadsf1"
-      },
-      {
-        medication_id: 2, medication_name: "moderna2", used_for: "gay2",
-        recommended_dose: "uhh idk2", recommended_frequency: "asdfasdfadsf2"
-      },
-      {
-        medication_id: 3, medication_name: "moderna3", used_for: "gay3",
-        recommended_dose: "uhh idk3", recommended_frequency: "asdfasdfadsf3"
-      },
-      {
-        medication_id: 4, medication_name: "moderna4", used_for: "gay4",
-        recommended_dose: "uhh idk4", recommended_frequency: "asdfasdfadsf4"
-      },
-      {
-        medication_id: 5, medication_name: "moderna5", used_for: "gay5",
-        recommended_dose: "uhh idk5", recommended_frequency: "asdfasdfadsf5"
-      },
-      {
-        medication_id: 6, medication_name: "moderna6", used_for: "gay6",
-        recommended_dose: "uhh idk6", recommended_frequency: "asdfasdfadsf6"
-      }
-    ];
-    for (let i = 0; i < 6; i++) {
-      this.availableMeds.push(new Medication(temp[i]));
-    }
-
-    // put inside of query return
-    this.progress.complete();
+    this.dataService.loadMedList().subscribe(resp => {
+      this.availableMeds = resp;
+      this.progress.complete();
+    });
   }
 
   updateVisit(visit: Visit | number): void {
@@ -136,13 +106,13 @@ export class PatientDrilldownComponent implements OnInit {
           this.progress.complete();
         } else {
           // new visit
-
           result.patientId = this.patient.patientId;
           this.visits.unshift(result);
-          // call insert sql
-          // put inside of query return
-          this.progress.complete();
-          this.loadVisits();
+          this.dataService.saveVisit(result).subscribe(resp => {
+            result.visitId = resp;
+            this.progress.complete();
+            this.loadVisits();
+          });
         }
       }
     });
@@ -158,10 +128,11 @@ export class PatientDrilldownComponent implements OnInit {
         this.progress.start();
         result.visitId = this.selectedVisitId;
         this.visitMeds.unshift(result);
-        // call insert sql
-        // put inside of query return
-        this.progress.complete();
-        this.loadProcsAndMeds(this.selectedVisitId);
+        this.dataService.savePrescription(result).subscribe(resp => {
+          result.prescriptionId = resp;
+          this.progress.complete();
+          this.loadProcsAndMeds(this.selectedVisitId);
+        });
       }
     });
   }
@@ -175,10 +146,11 @@ export class PatientDrilldownComponent implements OnInit {
         this.progress.start();
         result.visitId = this.selectedVisitId;
         this.visitProcedures.unshift(result);
-        // call insert sql
-        // put inside of query return
-        this.progress.complete();
-        this.loadProcsAndMeds(this.selectedVisitId);
+        this.dataService.saveProcedure(result).subscribe(resp => {
+          result.procedureId = resp;
+          this.progress.complete();
+          this.loadProcsAndMeds(this.selectedVisitId);
+        });
       }
     });
   }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Employee } from './models/employee';
+import { Medication } from './models/medication';
 import { Patient } from './models/patient';
 import { Prescription } from './models/prescription';
 import { Procedure } from './models/procedure';
@@ -70,6 +71,72 @@ export class DataService {
     }
     else {
       return of(this.dummyProcedures(visitId));
+    }
+  }
+
+  loadMedList(): Observable<any> {
+    if (environment.production) {
+      return this.httpClient.get(this.baseUrl + '/medslist');
+    }
+    else {
+      return of(this.dummyMeds());
+    }
+  }
+
+  saveVisit(newVisit: Visit): Observable<any> {
+    if (environment.production) {
+      // POST, NOT GET
+      return this.httpClient.post(this.baseUrl + '/newvisit', newVisit);
+    }
+    else {
+      return of(1);
+    }
+  }
+
+  saveProcedure(newProcedure: Procedure): Observable<any> {
+    if (environment.production) {
+      // POST, NOT GET
+      return this.httpClient.post(this.baseUrl + '/newprocedure', newProcedure);
+    }
+    else {
+      return of(1);
+    }
+  }
+
+  savePrescription(newPrescription: Prescription): Observable<any> {
+    if (environment.production) {
+      // POST, NOT GET
+      return this.httpClient.post(this.baseUrl + '/newprescription', newPrescription);
+    }
+    else {
+      return of(1);
+    }
+  }
+
+  loadPopularProcedures(): Observable<any> {
+    if (environment.production) {
+      return this.httpClient.get(this.baseUrl + '/popularprocedures');
+    }
+    else {
+      return of(this.dummyPopularProcedures());
+    }
+  }
+
+  loadAdmissionReasons(): Observable<any> {
+    if (environment.production) {
+      return this.httpClient.get(this.baseUrl + '/admissionreasons');
+    }
+    else {
+      return of(this.dummyAdmissionReasons());
+    }
+  }
+
+  loadAdmittedDischarged(): Observable<any> {
+    if (environment.production) {
+      return this.httpClient.get(this.baseUrl + '/admitteddischarged');
+    }
+    else {
+      return of(this.dummyAdmittedDischarged());
     }
   }
 
@@ -164,5 +231,93 @@ export class DataService {
       tempProcs.push(new Procedure(temp2));
     }
     return tempProcs;
+  }
+
+  dummyMeds(): any {
+    let tempMeds = new Array<Medication>();
+    let temp = [
+      {
+        medication_id: 1, medication_name: "moderna1", used_for: "gay1",
+        recommended_dose: "uhh idk1", recommended_frequency: "asdfasdfadsf1"
+      },
+      {
+        medication_id: 2, medication_name: "moderna2", used_for: "gay2",
+        recommended_dose: "uhh idk2", recommended_frequency: "asdfasdfadsf2"
+      },
+      {
+        medication_id: 3, medication_name: "moderna3", used_for: "gay3",
+        recommended_dose: "uhh idk3", recommended_frequency: "asdfasdfadsf3"
+      },
+      {
+        medication_id: 4, medication_name: "moderna4", used_for: "gay4",
+        recommended_dose: "uhh idk4", recommended_frequency: "asdfasdfadsf4"
+      },
+      {
+        medication_id: 5, medication_name: "moderna5", used_for: "gay5",
+        recommended_dose: "uhh idk5", recommended_frequency: "asdfasdfadsf5"
+      },
+      {
+        medication_id: 6, medication_name: "moderna6", used_for: "gay6",
+        recommended_dose: "uhh idk6", recommended_frequency: "asdfasdfadsf6"
+      }
+    ];
+    for (let i = 0; i < 6; i++) {
+      tempMeds.push(new Medication(temp[i]));
+    }
+    return tempMeds;
+  }
+
+  dummyPopularProcedures(): any {
+    let tempEmployees = new Array<Employee>();
+    let temp = [
+      {
+        employee_id: 1, first_name: "Employee", last_name: "Jones",
+        job_title: "nurse", phone_number: 1234567890, email: "employee.jones@email.com"
+      },
+      {
+        employee_id: 2, first_name: "Asdf", last_name: "McGee",
+        job_title: "Radiologist", phone_number: 4567890123, email: "asdf@email.com"
+      }
+    ];
+    for (let i = 0; i < 2; i++) {
+      tempEmployees.push(new Employee(temp[i]));
+    }
+    return tempEmployees;
+  }
+
+  dummyAdmissionReasons(): any {
+    let tempEmployees = new Array<Employee>();
+    let temp = [
+      {
+        employee_id: 1, first_name: "Employee", last_name: "Jones",
+        job_title: "nurse", phone_number: 1234567890, email: "employee.jones@email.com"
+      },
+      {
+        employee_id: 2, first_name: "Asdf", last_name: "McGee",
+        job_title: "Radiologist", phone_number: 4567890123, email: "asdf@email.com"
+      }
+    ];
+    for (let i = 0; i < 2; i++) {
+      tempEmployees.push(new Employee(temp[i]));
+    }
+    return tempEmployees;
+  }
+
+  dummyAdmittedDischarged(): any {
+    let tempEmployees = new Array<Employee>();
+    let temp = [
+      {
+        employee_id: 1, first_name: "Employee", last_name: "Jones",
+        job_title: "nurse", phone_number: 1234567890, email: "employee.jones@email.com"
+      },
+      {
+        employee_id: 2, first_name: "Asdf", last_name: "McGee",
+        job_title: "Radiologist", phone_number: 4567890123, email: "asdf@email.com"
+      }
+    ];
+    for (let i = 0; i < 2; i++) {
+      tempEmployees.push(new Employee(temp[i]));
+    }
+    return tempEmployees;
   }
 }
