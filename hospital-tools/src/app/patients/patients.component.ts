@@ -79,7 +79,7 @@ export class PatientsComponent implements OnInit {
     this.patients = [];
     this.progress.start();
     this.dataService.loadPatients().subscribe(resp => {
-      this.patients = resp;
+      this.patients = resp.msg;
       this.progress.complete();
       this.search();
     });
