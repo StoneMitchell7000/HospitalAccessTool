@@ -30,19 +30,19 @@ export class DashboardComponent implements OnInit {
   loadCharts(): void {
     this.progress.start();
     this.dataService.loadPopularProcedures().subscribe(resp => {
-      this.popularProcedures = resp;
+      this.popularProcedures = resp.msg;
       this.progress.complete();
     });
 
     this.progress.start();
     this.dataService.loadAdmissionReasons().subscribe(resp => {
-      this.admissionReasons = resp;
+      this.admissionReasons = resp.msg;
       this.progress.complete();
     });
 
     this.progress.start();
     this.dataService.loadAdmittedDischarged().subscribe(resp => {
-      this.admittedDischarged = resp;
+      this.admittedDischarged = resp.msg;
       this.progress.complete();
     });
   }

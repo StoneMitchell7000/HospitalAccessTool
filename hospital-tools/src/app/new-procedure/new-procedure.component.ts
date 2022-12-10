@@ -33,7 +33,7 @@ export class NewProcedureComponent implements OnInit {
   loadEmployeeList(): void {
     this.progress.start();
     this.dataService.loadEmployeeList().subscribe(resp => {
-      this.employeeList = resp;
+      this.employeeList = resp.msg;
       this.progress.complete();
     });
   }

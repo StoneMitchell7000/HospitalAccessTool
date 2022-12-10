@@ -44,7 +44,7 @@ export class PatientDrilldownComponent implements OnInit {
     this.visits = [];
     this.progress.start();
     this.dataService.loadPatientVisits(this.patient.patientId).subscribe(resp => {
-      this.visits = resp;
+      this.visits = resp.msg;
       this.progress.complete();
       this.selectVisit(this.visits[0]);
     });
@@ -65,13 +65,13 @@ export class PatientDrilldownComponent implements OnInit {
 
     this.progress.start();
     this.dataService.loadPrescriptions(visitId).subscribe(resp => {
-      this.visitMeds = resp;
+      this.visitMeds = resp.msg;
       this.progress.complete();
     });
 
     this.progress.start();
     this.dataService.loadProcedures(visitId).subscribe(resp => {
-      this.visitProcedures = resp;
+      this.visitProcedures = resp.msg;
       this.progress.complete();
     });
   }
@@ -79,7 +79,7 @@ export class PatientDrilldownComponent implements OnInit {
   getMedList(): void {
     this.progress.start();
     this.dataService.loadMedList().subscribe(resp => {
-      this.availableMeds = resp;
+      this.availableMeds = resp.msg;
       this.progress.complete();
     });
   }

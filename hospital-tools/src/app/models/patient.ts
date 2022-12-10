@@ -10,7 +10,7 @@ export class Patient {
         this.patientId = obj && obj.patient_id || null;
         this.firstName = obj && obj.first_name || null;
         this.lastName = obj && obj.last_name || null;
-        this.dateOfBirth = obj && obj.date_of_birth || null;
+        this.dateOfBirth = obj && new Date(obj.date_of_birth) || null;
         this.phone = obj && obj.phone || null;
         this.email = obj && obj.email || null;
     }

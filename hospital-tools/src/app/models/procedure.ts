@@ -16,7 +16,7 @@ export class Procedure {
         this.performedBy = obj && obj.performed_by || null;
         this.dateTime = obj && obj.date_time || null;
         this.department = obj && obj.department || null;
-        this.procedure = obj && obj.procedure || null;
+        this.procedure = obj && obj.procedure_performed || null;
         this.floorNumber = obj && obj.floor_number || null;
         this.roomNumber = obj && obj.room_number || null;
         this.results = obj && obj.results || null;
