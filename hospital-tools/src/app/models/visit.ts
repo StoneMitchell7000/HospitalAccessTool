@@ -3,6 +3,8 @@ export class Visit {
     public patientId: number;
     public inDate: Date;
     public outDate: Date;
+    public displayInDate: string;
+    public displayOutDate: string;
     public visitType: string;
     public visitReason: string;
     public scheduled: boolean;
@@ -17,6 +19,8 @@ export class Visit {
         this.patientId = obj && obj.patient_id || obj.patientId || null;
         this.inDate = obj && obj.in_date || obj.inDate || null;
         this.outDate = obj && obj.out_date || obj.outDate || null;
+        this.displayInDate = obj && obj.in_date || obj.inDate || null;
+        this.displayOutDate = obj && obj.out_date || obj.outDate || null;
         this.visitType = obj && obj.visit_type || obj.visitType || null;
         this.visitReason = obj && obj.visit_reason || obj.visitReason || null;
         this.scheduled = obj && obj.scheduled || false;

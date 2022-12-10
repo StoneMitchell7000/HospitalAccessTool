@@ -42,7 +42,7 @@ export class NewProcedureComponent implements OnInit {
     if (!save) {
       this.dialogRef.close();
     } else if (!this.procedure.performedBy || !this.procedure.dateTime || !this.procedure.department ||
-      !this.procedure.procedure || !this.procedure.floorNumber ||
+      !this.procedure.procedurePerformed || !this.procedure.floorNumber ||
       !this.procedure.roomNumber || !this.procedure.results || !this.procedure.notes) {
       this.openSnackBar('Please fill out all fields before saving.', 3000);
     } else {

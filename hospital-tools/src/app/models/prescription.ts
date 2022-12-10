@@ -6,6 +6,8 @@ export class Prescription {
     public frequency: string;
     public startDate: Date;
     public endDate: Date;
+    public displayStartDate: string;
+    public displayEndDate: string;
 
     constructor(obj?: any) {
         this.prescriptionId = obj && obj.prescription_id || null;
@@ -15,6 +17,8 @@ export class Prescription {
         this.frequency = obj && obj.frequency || null;
         this.startDate = obj && obj.start_date || null;
         this.endDate = obj && obj.end_date || null;
+        this.displayStartDate = obj && obj.start_date || null;
+        this.displayEndDate = obj && obj.end_date || null;
     }
 
     get formatStartDate(): any {

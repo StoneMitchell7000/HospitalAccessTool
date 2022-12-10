@@ -67,7 +67,7 @@
                 <div class="dashboard-scroll-container">
                     <div *ngFor="let day of admittedDischarged">
                         <div class="dashboard-row animated fadeInUp">
-                            <div>{{day.formatDate | date:'MM/dd/yyyy'}}</div>
+                            <div>{{day.displayDate}}</div>
                             <div>{{day.admitted}}</div>
                             <div>{{day.discharged}}</div>
                         </div>

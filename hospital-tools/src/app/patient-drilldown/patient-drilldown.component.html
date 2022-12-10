@@ -15,8 +15,8 @@
             <div *ngFor="let visit of visits" class="visit-chip"
                 [ngClass]="{'selected-chip' : visit.visitId === selectedVisitId}" (click)="selectVisit(visit)" matRipple
                 [matRippleUnbounded]="false" [matRippleCentered]="true" [matRippleColor]="'#ff6767be'">
-                <div class="chip-start-date">{{visit.formatInDate | date:'MM/dd/yyyy'}} -</div>
-                <div class="chip-end-date">{{visit.formatOutDate | date:'MM/dd/yyyy'}}</div>
+                <div class="chip-start-date">{{visit.displayInDate}} -</div>
+                <div class="chip-end-date">{{visit.displayOutDate}}</div>
                 <!-- <button (click)="updateVisit(visit)" #focus
                     [ngClass]="{'hidden-button' : visit.visitId !== selectedVisitId}" mat-icon-button
                     class="edit-button visit-edit" matTooltip="Edit Visit" matTooltipPosition="right"
@@ -27,8 +27,8 @@
     </div>
     <div>
         <div class="title-block">Procedures</div>
-        <button (click)="addProc()" mat-icon-button class="add-button" matTooltip="Add Procedure" matTooltipPosition="right"
-            matTooltipShowDelay="400"><i class="material-icons">add_circle</i>
+        <button (click)="addProc()" mat-icon-button class="add-button" matTooltip="Add Procedure"
+            matTooltipPosition="right" matTooltipShowDelay="400"><i class="material-icons">add_circle</i>
         </button>
     </div>
     <div class="relative-wrapper">
@@ -48,8 +48,8 @@
                 <div class="procedure-scroll-container">
                     <div *ngFor="let proc of visitProcedures">
                         <div class="procedure-row animated fadeInUp">
-                            <div>{{proc.procedure}}</div>
-                            <div>{{proc.formatDate | date:'MM/dd/yyyy hh:mm a'}}</div>
+                            <div>{{proc.procedurePerformed}}</div>
+                            <div>{{proc.displayDate}}</div>
                             <div>{{proc.department}}</div>
                             <div>{{proc.results}}</div>
                             <!-- <div>{{proc.performedBy}}</div> -->

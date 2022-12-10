@@ -62,17 +62,13 @@ export class PatientDrilldownComponent implements OnInit {
   loadProcsAndMeds(visitId: number): void {
     this.visitMeds = [];
     this.visitProcedures = [];
-
     this.progress.start();
     this.dataService.loadPrescriptions(visitId).subscribe(resp => {
       this.visitMeds = resp.msg;
-      this.progress.complete();
-    });
-
-    this.progress.start();
-    this.dataService.loadProcedures(visitId).subscribe(resp => {
-      this.visitProcedures = resp.msg;
-      this.progress.complete();
+      this.dataService.loadProcedures(visitId).subscribe(resp2 => {
+        this.visitProcedures = resp2.msg;
+        this.progress.complete();
+      });
     });
   }
 
